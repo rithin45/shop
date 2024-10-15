@@ -1,0 +1,42 @@
+{%include 'user_header.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<center>
+<body><br>
+    <h4><u>Any Complaints Write Here!!!</u></h4><br>
+    <form method="post">
+        <table cellpadding="5px" cellspacing="5px">
+            <tr>
+                <th>Complaint</th>
+                <td><textarea name="complaint" id="complaint" rows="2" cols="30" class="form-control"></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="submit" value="submit" class="btn btn-success"></td>
+            </tr>
+        </table>
+        <table><br>
+            <h4><u>Complaint List</u></h4><br>
+            <tr>
+                <th>SL.No</th>
+                <th>Complaint</th>
+                <th>Replay</th>
+                <th>Date</th>
+            </tr>
+            {%for i in data['cview']%}
+            <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i['complaint']}}</td>
+            <td>{{i['replay']}}</td>
+            <td>{{i['date']}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+    </form>
+</body>
+</center>
+</html>

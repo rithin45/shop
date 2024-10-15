@@ -1,0 +1,40 @@
+{%include 'admin_header.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<center>
+<body><br>
+    <h4><u>Shop View</u></h4>
+    <form method="post"><br><br>
+            <table cellpadding="5px" cellspacing="5px" class="table" style="width: 50%;">
+                <tr>
+                    <th>SL.No</th>
+                    <th>SHop Name</th>
+                    <th>Place</th>
+                    <th>Landmark</th>
+                    <th>Phone</th>
+                    <th>email</th>
+                </tr>
+            {%for i in data['svieww']%}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{i['shop_name']}}</td>
+                <td>{{i['place']}}</td>
+                <td>{{i['landmark']}}</td>
+                <td>{{i['phone']}}</td>
+                <td>{{i['email']}}</td>
+                    {%if i['status' or 'usertype']=='pending'%}
+                        <td><a href="?action=accept&sid={{i['shop_id']}}&lid={{i['login_id']}}" class="btn btn-success">Accept</a></td>
+                        <td><a href="?action=reject&sid={{i['shop_id']}}&lid={{i['login_id']}}" class="btn btn-success">Reject</a></td>
+                    {%endif%} 
+            </tr>
+            {%endfor%}
+        </table>
+    </form>
+</body>
+</center>
+</html>

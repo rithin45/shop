@@ -1,0 +1,134 @@
+{%include 'admin_header.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<center>
+<body>
+    <h4><u>Add Products</u></h4><br>
+    <form method="post" enctype="multipart/form-data">
+
+        {%if data["dw"]%}
+
+        <table >
+
+            <tr>
+                <th>cateory name</th>
+                <td>
+                    <select name="category_id" class="form-control">
+                        <option value="{{data['dw'][0]['category_id']}}" >{{data['dw'][0]['category_name']}}</option>
+
+                        {%for i in data['cat']%}
+                            <option value="{{ i['category_id'] }}">
+                            {{i['category_name']}}
+                        </option>
+                        {%endfor%}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+
+                <th>Product name:</th>
+                <td><input type="text" name="pname" value="{{data['dw'][0]['product_name']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Details:</th>
+                <td><input type="text" name="details" value="{{data['dw'][0]['details']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Price:</th>
+                <td><input type="text" name="price" value="{{data['dw'][0]['price']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Quantity:</th>
+                <td><input type="text" name="qnty" value="{{data['dw'][0]['quantity']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Image:</th>
+                <td><input type="file" name="img" class="form-control"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="update" value="update" class="btn btn-outline-success"></td>
+            </tr>
+        </table>
+
+        {%else%}
+        <table>
+
+             <tr>
+                <th>cateory name</th>
+                <td>
+                    <select name="category_id" class="form-control">
+                        <option value="">select</option>
+                        {%for i in data['cat']%}
+                            <option value="{{ i['category_id'] }}">
+                            {{i['category_name']}}
+                        </option>
+                        {%endfor%}
+                    </select>
+                </td>
+            </tr>
+            <tr> 
+
+                <th>Product name:</th>
+                <td><input type="text" name="pname" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Details:</th>
+                <td><input type="text" name="details" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Price:</th>
+                <td><input type="text" name="price" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Quantity:</th>
+                <td><input type="text" name="qnty" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><input type="file" name="img" class="form-control"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="submit" value="submit" class="btn btn-outline-success"></td>
+            </tr>
+        </table><br>
+
+        {%endif%}
+        <h4><u>View Producs</u></h4><br>
+
+        <table class="table" style="width: 50%;">
+            <tr>
+                <th>SL.No:</th>
+                <th>Category Name:</th>
+                <th>Product Name:</th>
+                <th>Details</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Image</th>
+            </tr>
+            {%for i in data['vieww']%}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{i['category_name']}}</td>
+                <td>{{i['product_name']}}</td>
+                <td>{{i['details']}}</td>
+                <td>{{i['price']}}</td>
+                <td>{{i['quantity']}}</td>
+                <td><img src="{{i['image']}}" alt="" width="200" height="200"></td>
+                <td><a href="?action=update&pid={{i['product_id']}}" class="btn btn-success">Update</a></td>
+                <td><a href="?action=delete&pid={{i['product_id']}}" class="btn btn-success">Delete</a></td>
+
+            </tr>
+
+            {%endfor%}
+        </table>
+        
+    </form>
+</body>
+</center>
+</html>
+{%include 'footer.html'%}

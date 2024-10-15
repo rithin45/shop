@@ -1,0 +1,54 @@
+{% include 'admin_header.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<center>
+<body><br><br>
+    <h4><u>User View</u></h4>
+    <form method="post">
+    <table class="table" style="width: 60%;" ><br><br>
+            <tr>
+                <th>SL.no</th>
+                <th>First Name:</th>
+         
+                <th>Last name:</th>
+            
+                <th>House name:</th>
+            
+                <th>Place:</th>
+            
+                <th>Landmark</th>
+            
+                <th>Pincode:</th>
+         
+                <th>Phone Number:</th>
+            
+                <th>Email:</th>
+            </tr>
+
+            {%for i in data['view']%}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{i['first_name']}}</td>
+                <td>{{i['last_name']}}</td>
+                <td>{{i['house_name']}}</td>
+                <td>{{i['place']}}</td>
+                <td>{{i['landmark']}}</td>
+                <td>{{i['pincode']}}</td>
+                <td>{{i['phone']}}</td>
+                <td>{{i['email']}}</td>
+            </tr>
+            {%endfor%}
+            
+            
+        </table>
+     </form>
+     </body>
+    
+</body>
+</center>
+</html>

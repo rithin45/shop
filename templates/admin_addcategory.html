@@ -1,0 +1,59 @@
+{% include 'admin_header.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<center>
+    <body>
+        <h3><u>Add Categories</u></h3><br><br><br>
+        <form method="post">
+
+            {%if data['up']%}
+            <table cellpadding="5px" cellspacing="5px">
+                <tr>
+                    <th>Category name:</th>
+                    <td><input type="text" name="category_name" value="{{data['up'][0]['category_name']}}" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="update" value="update" class="btn btn-success"></td>
+                </tr>
+            </table>
+
+            {%else%}
+
+
+
+            <table cellpadding="5px" cellspacing="5px">
+                <tr>
+                    <th>Category name:</th>
+                    <td><input type="text" name="category_name" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="ADD" value="ADD" class="btn btn-success"></td>
+                </tr>
+            </table>
+            {%endif%}
+            <br><br><br><br>
+            <h3>View Added Categories</h3>
+            <table class="table table-sm" style="width: 30%;">
+                <tr>
+                    <th colspan="1">Sl.No</th>
+                    <th colspan="1">Category Name</th>
+                </tr>
+    
+                    {%for i in data['vitem']%}
+                    <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{i['category_name']}}</td>
+                    <td><a href="?action=update&cid={{i['category_id']}}" class="btn btn-success">update</a>
+                    <td><a href="?action=delete&cid={{i['category_id']}}" class="btn btn-success">delete</a></td>    
+                    {%endfor%}
+                </tr>
+            </table>
+        </form>
+    </body>
+</center>
+</html>

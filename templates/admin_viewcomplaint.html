@@ -1,0 +1,34 @@
+{%include 'admin_header.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<center>
+<body><br>
+    <h4><u>Complaint View</u></h4><br><br>
+    <form method="post">
+        <table cellpadding="5px" cellspacing="5px" class="table" style="width: 40%;">
+            <tr>
+                <th>Complaint</th>
+                <th>Date</th>
+                <th>Replay</th>
+            </tr>
+            {%for i in data['cvieww']%}
+            <tr>
+                <td>{{i['complaint']}}</td>
+                <td>{{i['date']}}</td>
+                <td>{{i['replay']}}</td>
+                    {%if i['replay']=='pending'%}
+                        <td><a href="admin_replay?comp_id={{i['comp_id']}}" class="btn btn-primary">reply</a></td>
+                    {%endif%}
+            </tr>
+            {%endfor%}
+        </table>
+     
+    </form>
+</body>
+</center>
+</html>
